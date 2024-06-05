@@ -2391,7 +2391,7 @@ void EXT_FUNC CBasePlayer::__API_HOOK(Killed)(entvars_t *pevAttacker, int iGib)
 		MESSAGE_BEGIN(MSG_ONE, gmsgADStop, nullptr, pev);
 		MESSAGE_END();
 
-    	float fadeTime = m_bHeadshotKilled ? 0.4f : 0.8f;
+    	float fadeTime = m_bHeadshotKilled ? 0.4f : 1.0f;
 
 		for (int i = 1; i <= gpGlobals->maxClients; i++)
     	{
