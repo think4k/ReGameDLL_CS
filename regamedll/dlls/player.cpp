@@ -2391,20 +2391,15 @@ void EXT_FUNC CBasePlayer::__API_HOOK(Killed)(entvars_t *pevAttacker, int iGib)
 		MESSAGE_BEGIN(MSG_ONE, gmsgADStop, nullptr, pev);
 		MESSAGE_END();
 
+    	float fadeTime = m_bHeadshotKilled ? 0.4f : 0.8f;
+
 		for (int i = 1; i <= gpGlobals->maxClients; i++)
     	{
         	CBasePlayer* pObserver = UTIL_PlayerByIndex(i);
 
         	if (pObserver == this || (pObserver && pObserver->IsObservingPlayer(this)))
         	{
-            	if (m_bHeadshotKilled)
-            	{
-                	UTIL_ScreenFade(pObserver, Vector(0, 0, 0), 0.4f, flDyingDuration, 255, (FFADE_OUT));
-            	}
-            	else
-            	{
-					UTIL_ScreenFade(pObserver, Vector(0, 0, 0), 0.8f, flDyingDuration, 255, (FFADE_OUT));
-            	}
+                UTIL_ScreenFade(pObserver, Vector(0, 0, 0), fadeTime, flDyingDuration, 255, (FFADE_OUT));
         	}
     	}
 		
