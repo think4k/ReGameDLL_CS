@@ -180,14 +180,13 @@ void CSmokeGrenade::WeaponIdle()
 
 	if (m_flStartThrow)
 	{
-		std::string radioMessage = "#Cstrike_TitlesTXT_Smoke_Grenade";
-    	size_t found = radioMessage.find("Grenade");
-		if (found != std::string::npos) {
-				radioMessage.replace(found, std::string("Grenade").length(), "");
+		std::string message = "#Smoke_Grenade";
+		size_t grenadePosition = message.find("Grenade");
+		if (grenadePosition != std::string::npos) {
+    		message.erase(grenadePosition, std::string("Grenade").length());
 		}
-		radioMessage += "!"; // Add exclamation mark
 		
-		m_pPlayer->Radio("%!MRAD_FIREINHOLE", radioMessage.c_str());
+		m_pPlayer->Radio("%!MRAD_FIREINHOLE", message.c_str());
 
 		Vector angThrow = m_pPlayer->pev->v_angle + m_pPlayer->pev->punchangle;
 
