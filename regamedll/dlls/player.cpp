@@ -2399,14 +2399,7 @@ void EXT_FUNC CBasePlayer::__API_HOOK(Killed)(entvars_t *pevAttacker, int iGib)
 
         	if (pObserver == this || (pObserver && pObserver->IsObservingPlayer(this)))
         	{
-				// CS2 dark red color (RGB: 140, 0, 0)
-            	const Vector cs2DarkRed = Vector(140, 0, 0);
-            	const Vector black = Vector(0, 0, 0);
-
-            	float t = 1.0f - (fadeTime / flDyingDuration); // Normalized time
-            	Vector interpolatedColor = cs2DarkRed * t + black * (1.0f - t);
-
-            	UTIL_ScreenFade(pObserver, interpolatedColor, fadeTime, flDyingDuration, 255, (FFADE_OUT));
+				UTIL_ScreenFade(pObserver, Vector(0, 0, 0), fadeTime, flDyingDuration, 255, (FFADE_OUT));
         	}
     	}
 		
