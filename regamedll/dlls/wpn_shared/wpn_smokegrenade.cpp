@@ -180,13 +180,18 @@ void CSmokeGrenade::WeaponIdle()
 
 	if (m_flStartThrow)
 	{
-		std::string message = "#Smoke_Grenade";
-		size_t grenadePosition = message.find("Grenade");
+
+		std::string displayMessage = "#Smoke_Grenade"; // Original message
+
+		// Find the position of "Grenade" in the display message
+		size_t grenadePosition = displayMessage.find(" Grenade");
+
+		// If "Grenade" is found in the display message, remove it
 		if (grenadePosition != std::string::npos) {
-    		message.erase(grenadePosition, std::string("Grenade").length());
+    		displayMessage.erase(grenadePosition, std::string(" Grenade").length());
 		}
-		
-		m_pPlayer->Radio("%!MRAD_FIREINHOLE", message.c_str());
+
+		m_pPlayer->Radio("%!MRAD_FIREINHOLE", displayMessage.c_str()); // Use the modified display message
 
 		Vector angThrow = m_pPlayer->pev->v_angle + m_pPlayer->pev->punchangle;
 
