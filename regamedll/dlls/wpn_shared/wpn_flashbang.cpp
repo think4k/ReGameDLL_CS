@@ -177,7 +177,7 @@ void CFlashbang::WeaponIdle()
 
 	if (m_flStartThrow)
 	{
-		m_pPlayer->Radio("%!MRAD_FIREINHOLE", "#Flashbang");
+		m_pPlayer->Radio("%!MRAD_FIREINHOLE", "#Flashbang!");
 
 		Vector angThrow = m_pPlayer->pev->v_angle + m_pPlayer->pev->punchangle;
 
