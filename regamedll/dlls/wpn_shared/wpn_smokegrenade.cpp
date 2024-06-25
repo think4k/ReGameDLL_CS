@@ -181,8 +181,9 @@ void CSmokeGrenade::WeaponIdle()
 	if (m_flStartThrow)
 	{
 		std::string displayMessage = "#Smoke_Grenade"; // Original message
+		displayMessage += "!";
 		
-		m_pPlayer->Radio("%!MRAD_FIREINHOLE", "displayMessage!");
+		m_pPlayer->Radio("%!MRAD_FIREINHOLE", displayMessage.c_str());
 
 		Vector angThrow = m_pPlayer->pev->v_angle + m_pPlayer->pev->punchangle;
 
