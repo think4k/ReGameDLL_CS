@@ -124,13 +124,6 @@ void CAK47::AK47Fire(float flSpread, float flCycleTime, BOOL fUseAutoAim)
 	vecSrc = m_pPlayer->GetGunPosition();
 	vecAiming = gpGlobals->v_forward;
 
-	// Calculate end position of the trace (example for bullet trace)
-	Vector vecEnd = vecSrc + vecAiming * 8192.0f;
-
-	// Perform trace line to check for collisions
-	TraceResult tr;
-	g_engfuncs.pfnTraceLine(vecSrc, vecEnd, ignore_monsters, pentToSkip, &tr);
-
 #ifdef REGAMEDLL_API
 	float flBaseDamage = CSPlayerWeapon()->m_flBaseDamage;
 #else
